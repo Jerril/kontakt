@@ -1,7 +1,7 @@
-@include('includes.head')
-    <nav>
-        <a href="/" class="logo">kòntakts</a>
-    </nav>
+@extends('layouts.app')
+
+@section('content')
+    @include('includes.nav')
 
     <main>
         <h2>Login</h2>
@@ -13,4 +13,6 @@
 
         <p>New here? <a href="/signup">Sign up</a></p>
     </main>
-@include('includes.footer')
+@endsection
+
+
