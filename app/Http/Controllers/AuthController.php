@@ -14,7 +14,7 @@ class AuthController extends Controller
         return view('pages.signup');
     }
 
-    public function signup(Request $request)
+    public function signup(SignupRequest $request)
     {
         $data = $request->validated();
 
@@ -25,7 +25,7 @@ class AuthController extends Controller
 
     public function login_form()
     {
-        return view('login');
+        return view('pages.login');
     }
 
     public function login(LoginRequest $request)

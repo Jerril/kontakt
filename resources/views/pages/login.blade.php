@@ -5,12 +5,12 @@
 
     <main>
         @if (Session::has('msg'))
-            <div class="alert alert-success">
+            <div role="alert" class="bg-teal-100 font-bold rounded-t px-4 py-2">
                 <p>{{ Session::get('msg') }}</p>
             </div>
         @endif
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div role="alert" class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
