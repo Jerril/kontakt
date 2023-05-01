@@ -4,11 +4,21 @@
     @include('includes.nav')
 
     <main>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h2>Sign up</h2>
-        <form action="">
-            <input class="name" type="text" placeholder="Name">
-            <input class="email" type="email" placeholder="Email" />
-            <input class="password" type="password" placeholder="Password" />
+        <form method="POST" action="{{route('signup.post')}}">
+            @csrf
+            <input name="name" type="text" placeholder="Name">
+            <input name="email" type="email" placeholder="Email" />
+            <input name="password" type="password" placeholder="Password" />
             <input type="submit" value="Create account">
         </form>
 

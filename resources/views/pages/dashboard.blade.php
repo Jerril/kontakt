@@ -1,3 +1,7 @@
+@if(!auth()->user())
+    {{redirect('/login')}}
+@endif
+
 @extends('layouts.app')
 
 @section('content')
