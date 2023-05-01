@@ -27,5 +27,5 @@ Route::post('/signup', [AuthController::class, 'signup'])->name('signup.post');
 Route::middleware('auth')->group(function() {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('/dashboard', fn() => view('pages.dashboard'))->name('dashboard');
 });
