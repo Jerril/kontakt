@@ -16,10 +16,17 @@ body {
 nav {
     background-color: #fff;
     height: 56px;
-    padding: 2px 35px;
+    padding: 2px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0 20px;
+}
+
+@media screen and (min-width: 480px) {
+    nav {
+        padding: 2px 35px;
+    }
 }
 
 nav a {
@@ -39,7 +46,6 @@ nav .logo:hover {
 nav .signup {
     border: 2px solid #3056D2;
     background-color: #3056D2;
-    /* border-radius: 4px; */
     padding: 6px 17px;
     color: #fff;
     font-weight: 500;
@@ -68,7 +74,7 @@ main {
     background-color: #fff;
     width: 90%;
     max-width: 500px;
-    margin: 20px auto;
+    margin: 35px auto;
     padding: 30px 20px;
     text-align: center;
 }
@@ -110,4 +116,86 @@ input[type="submit"] {
 main p {
     text-align: left;
     font-size: 14px;
+}
+
+nav form {
+    width: 100%;
+    max-width: 750px;
+}
+
+.dashboard {
+    display: flex;
+    padding: 20px 0;
+}
+
+.dashboard aside {
+    width: 300px;
+    padding: 0 35px;
+}
+
+.add-contact {
+    border: none;
+    padding: 12px 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background-color: #3056D2;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dashboard section {
+    width: 100%;
+    padding: 0 35px;
+}
+
+table {
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #e1e5ee;
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+}
+
+table thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+}
+
+table th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+table td {
+    padding: 1rem 2rem;
+}
+
+table a {
+    text-decoration: none;
+    color: #2962ff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f4f6fb;
+}
+
+.fa {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.fa-eye {
+    color: #2962ff;
+}
+
+.fa-edit {
+    color: rgb(115, 202, 0);
+    margin: 0 14px;
+}
+
+.fa-trash {
+    color: rgba(255, 51, 0, 0.76);
 }
