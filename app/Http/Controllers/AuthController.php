@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\LoginRequest;
@@ -35,7 +36,7 @@ class AuthController extends Controller
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard')->with('msg', "Login successful!");
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([
@@ -49,6 +50,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.get')->with('msg', "Logout successful!");
+        return redirect()->route('login.get');
     }
 }

@@ -3,25 +3,26 @@
 @section('content')
     @include('includes.nav')
 
+    @if (Session::has('msg'))
+        <div role="alert" class="w-1/2 bg-teal-100 text-center font-bold rounded-t px-4 py-2 mt-4 mx-auto">
+            <p>{{ Session::get('msg') }}</p>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div role="alert" class="w-1/2 bg-red-400 text-white text-center font-bold rounded-t px-4 py-2 mt-4 mx-auto">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <main>
-        @if (Session::has('msg'))
-            <div role="alert" class="bg-teal-100 font-bold rounded-t px-4 py-2">
-                <p>{{ Session::get('msg') }}</p>
-            </div>
-        @endif
-        @if ($errors->any())
-            <div role="alert" class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <h2>Login</h2>
-        <form action="">
-            <input class="email" type="email" placeholder="Email" />
-            <input class="password" type="password" placeholder="Password" />
+        <form method="POST" action="{{route('login.post')}}">
+            @csrf
+            <input name="email" type="email" placeholder="Email" />
+            <input name="password" type="password" placeholder="Password" />
             <input type="submit" value="Login">
         </form>
 

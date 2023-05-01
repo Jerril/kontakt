@@ -17,6 +17,8 @@
             <button class="add-contact">
                 + New contact
             </button>
+            <p>Hello {{auth()->user()->name}}</p>
+            <a href="{{route('logout')}}">Logout</a>
         </aside>
         <section>
             <table>
