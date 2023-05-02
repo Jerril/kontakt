@@ -34,7 +34,8 @@ nav a {
     text-decoration: none;
 }
 
-nav .logo {
+nav .logo,
+.sidebar .logo {
     font-style: italic;
     font-size: 19px;
 }
@@ -116,36 +117,6 @@ input[type="submit"] {
 main p {
     text-align: left;
     font-size: 14px;
-}
-
-nav form {
-    width: 100%;
-    max-width: 750px;
-}
-
-.dashboard {
-    display: flex;
-    padding: 20px 0;
-}
-
-.dashboard aside {
-    width: 300px;
-    padding: 0 35px;
-}
-
-.add-contact {
-    border: none;
-    padding: 12px 17px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    background-color: #3056D2;
-    color: #fff;
-    cursor: pointer;
-}
-
-.dashboard section {
-    width: 100%;
-    padding: 0 35px;
 }
 
 table {
@@ -238,4 +209,85 @@ table tr:nth-child(even) {
 .file-upload:hover {
     background-position: 0 -100%;
     color: #3056D2;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.dashboard .sidebar {
+    height: 100vh;
+    width: 210px;
+    padding: 20px 10px;
+    background-color: #202123;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .logo {
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.add-contact:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.sidebar .groups {
+    margin: 50px 0;
+}
+
+.groups p {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.groups p span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    padding: 0 6px;
+    border: 1px solid #f2f2f2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.add-contact:hover,
+.groups p span:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.groups ul {
+    padding: 10px 0;
+    line-height: 1.8;
+}
+
+.sidebar .profile {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.sidebar .profile span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    margin-right: 6px;
+}
+
+.sidebar button {
+    display: block;
+    border: 1px solid #f2f2f2;
+    padding: 8px 12px;
+    border-radius: 4px;
 }

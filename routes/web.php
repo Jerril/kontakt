@@ -31,18 +31,14 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // contact group routes
-    Route::name('group')->group(function() {
-        Route::post('/', [DashboardController::class, 'storeGroup'])->name('group.post');
-        Route::delete('/{group}', [DashboardController::class, 'deleteGroup'])->name('group.delete');
-    });
+    Route::post('/group', [DashboardController::class, 'storeGroup'])->name('group.post');
+    Route::delete('/group/{group}', [DashboardController::class, 'deleteGroup'])->name('group.delete');
 
     // contact routes
-    Route::name('contact')->group(function() {
-        Route::post('/', [DashboardController::class, 'storeContact'])->name('.post');
-        Route::put('/{contact}', [DashboardController::class, 'updateContact'])->name('.put');
-        Route::get('/{contact}', [DashboardController::class, 'deleteContact'])->name('.delete');
+    Route::post('/contact', [DashboardController::class, 'storeContact'])->name('contact.post');
+    Route::put('/contact/{contact}', [DashboardController::class, 'updateContact'])->name('contact.put');
+    Route::get('/contact/{contact}', [DashboardController::class, 'deleteContact'])->name('contact.delete');
 
-        // assign contact to a group
-        Route::put('/{contact}/group/{group}', [DashboardController::class, 'groupContact'])->name('group-contact');
-    });
+    // assign contact to a group
+    Route::put('/contact/{contact}/group/{group}', [DashboardController::class, 'groupContact'])->name('contact.group-contact');
 });
