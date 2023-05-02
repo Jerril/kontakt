@@ -18,4 +18,9 @@ class Contact extends Model
         'address',
         'group_id'
     ];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

@@ -8,9 +8,19 @@ use App\Models\Contact;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::where('user_id', auth()->id())->orderBy('name')->get();
+        if($request->has('s')){
+            $contacts = Contact::where('user_id', auth()->id())
+                ->where(function($query) use ($request){
+                    $query->where('name', 'LIKE', '%'.$request->s.'%')
+                    ->orWhere('email', 'LIKE', '%'.$request->s.'%');
+                })
+                ->orderBy('name')->with('group')->get();
+        }else{
+            $contacts = Contact::where('user_id', auth()->id())->orderBy('name')->with('group')->get();
+        }
+
         $groups = Group::where('user_id', auth()->id())->get();
 
         return view('pages.dashboard', compact('contacts', 'groups'));
@@ -46,13 +56,13 @@ class DashboardController extends Controller
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'phone_number' => 'nullable|string',
             'address' => 'nullable|string',
-            'group_id' => 'integer'
+            'group_id' => 'nullable|integer'
         ]);
 
         $data['user_id'] = auth()->id();
 
         if($request->hasFile('avatar')){
-            $data['avatar'] = $request->file('avatar')->store('avatar/'.auth()->id(), 'public');
+            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
 
         $contact = Contact::create($data);
@@ -67,10 +77,9 @@ class DashboardController extends Controller
             'email' => 'required|string',
             'phone_number' => 'nullable|string',
             'address' => 'nullable|string',
-            'group_id' => 'integer'
+            'group_id' => 'nullable|integer'
         ]);
 
-        $data['user_id'] = auth()->id();
 
         $contact = $contact->update($data);
 

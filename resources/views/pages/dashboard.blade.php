@@ -39,9 +39,21 @@
         </div>
 
         <div class="main">
-            <form action="" class="search-bar">
-                <input type="text" name="" placeholder="Search..." />
-            </form>
+            <div class="heading">
+                <div class="search">
+                    <form method="GET" action="{{route('dashboard')}}" class="search-bar">
+                        <input type="text" class="rounded-s" name="s" placeholder="Type here..."/>
+                        <div class="btns">
+                            <input class="submit rounded-e" type="submit" value="Search" />
+                            {{-- <a class="reset" href="{{route('dashboard')}}">Reset</a> --}}
+                        </div>
+
+                    </form>
+                </div>
+                <div class="export" title='Export'>
+                    <i class="fas fa-print"></i>
+                </div>
+            </div>
             <section>
                 @if (Session::has('msg'))
                     <div class="alert alert-success">
@@ -65,16 +77,31 @@
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Address</th>
+                            <th>Group</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($contacts as $contact)
                             <tr>
-                                <td>{{$contact->name ?? ''}}</td>
+                                <td class="contact-name">
+                                    <div class="img">
+                                    @if($contact->avatar)
+                                        <img src="{{asset('storage/'.$contact->avatar) ?? ''}}" alt="">
+                                    @endif
+                                    </div>
+                                    <p>{{$contact->name ?? ''}}</p>
+                                </td>
                                 <td>{{$contact->email ?? ''}}</td>
-                                <td>{{$contact->phone_number ?? ''}}</td>
-                                <td>{{$contact->address ?? ''}}</td>
+                                <td>{{$contact->phone_number ?? '---'}}</td>
+                                <td>{{$contact->address ?? '---'}}</td>
+                                <td>
+                                    @if($contact->group)
+                                    <span style="font-size:11px; font-weight:700" class="bg-green-500 text-white px-2 py-1 rounded">{{$contact->group->name}}</span>
+                                    @else
+                                    ---
+                                    @endif
+                                </td>
                                 <td><i class="fa fa-edit" data-toggle="modal" data-target="#editContactModal{{$contact->id}}"></i><a href="{{route('contact.delete', ['contact' => $contact->id])}}"><i class="fa fa-trash"></i></a></td>
                             </tr>
                             {{-- Edit Contact Modal --}}
@@ -108,8 +135,15 @@
                                                 <input type="text" name="address" class="form-control" id="address" value="{{$contact->address ?? ''}}">
                                             </div>
                                             <div class="form-group">
-                                                <label for="group" class="col-form-label">Group</label>
-                                                <input type="text" name="group" class="form-control" id="group" value="{{$contact->group ?? ''}}">
+                                                <label for="group" class="col-form-label">Select group</label>
+                                                <select name="group_id" id="group">
+                                                    <option value="">pick one...</option>
+                                                    @if(!$groups->isEmpty())
+                                                        @foreach ($groups as $group)
+                                                            <option value="{{$group->id}}">{{$group->name}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -141,7 +175,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form method="POST" action="{{route('contact.post')}}">
+            <form method="POST" action="{{route('contact.post')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -165,8 +199,15 @@
                         <input type="file" name="avatar" class="form-control" id="avatar">
                     </div>
                     <div class="form-group">
-                        <label for="group" class="col-form-label">Group</label>
-                        <input type="text" name="group" class="form-control" id="group">
+                        <label for="group" class="col-form-label">Select group</label>
+                        <select name="group_id" id="group">
+                            <option value="">pick one...</option>
+                            @if(!$groups->isEmpty())
+                                @foreach ($groups as $group)
+                                    <option value="{{$group->id}}">{{$group->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
