@@ -38,9 +38,11 @@ nav .logo,
 .sidebar .logo {
     font-style: italic;
     font-size: 19px;
+    font-weight: 700;
 }
 
 nav .logo:hover {
+    /* color: inherit; */
     text-decoration: underline;
 }
 
@@ -94,17 +96,8 @@ form input {
     font-size: 16px;
 }
 
-form input:focus {
-    background-color: #fff;
-    border: 1px solid #f2f2f2;
-}
-
 form input+input {
     margin-top: 10px;
-}
-
-form input:focus {
-    outline: 0;
 }
 
 input[type="submit"] {
@@ -114,101 +107,16 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+form input:focus {
+    outline: 0;
+    background-color: #fff;
+    border: 1px solid #f2f2f2;
+    color: #000;
+}
+
 main p {
     text-align: left;
     font-size: 14px;
-}
-
-table {
-    border-collapse: collapse;
-    box-shadow: 0 5px 10px #e1e5ee;
-    background-color: white;
-    text-align: left;
-    overflow: hidden;
-    width: 100%;
-}
-
-table thead {
-    box-shadow: 0 5px 10px #e1e5ee;
-}
-
-table th {
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-size: 0.7rem;
-    font-weight: 900;
-}
-
-table td {
-    padding: 1rem 2rem;
-}
-
-table a {
-    text-decoration: none;
-    color: #2962ff;
-}
-
-table tr:nth-child(even) {
-    background-color: #f4f6fb;
-}
-
-.fa {
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.fa-eye {
-    color: #2962ff;
-}
-
-.fa-edit {
-    color: rgb(115, 202, 0);
-    margin: 0 14px;
-}
-
-.fa-trash {
-    color: rgba(255, 51, 0, 0.76);
-}
-
-.wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.wrapper .file-upload {
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 4px solid #FFFFFF;
-    overflow: hidden;
-    background-image: linear-gradient(to bottom, #3056D2 50%, #FFFFFF 50%);
-    background-size: 100% 200%;
-    transition: all 1s;
-    color: #FFFFFF;
-    font-size: 100px;
-}
-
-.file-upload input[type='file'] {
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.file-upload:hover {
-    background-position: 0 -100%;
-    color: #3056D2;
 }
 
 .dashboard {
@@ -217,7 +125,7 @@ table tr:nth-child(even) {
 
 .dashboard .sidebar {
     height: 100vh;
-    width: 210px;
+    width: 260px;
     padding: 20px 10px;
     background-color: #202123;
     color: #fff;
@@ -227,9 +135,16 @@ table tr:nth-child(even) {
 }
 
 .sidebar .logo {
-    font-weight: 700;
     display: inline-block;
     margin-bottom: 30px;
+}
+
+.sidebar .logo:hover {
+    color: #fff;
+}
+
+.sidebar .logout:hover {
+    text-decoration: none;
 }
 
 .add-contact:hover {
@@ -265,21 +180,21 @@ table tr:nth-child(even) {
 
 .groups ul {
     padding: 10px 0;
-    line-height: 1.8;
+    line-height: 2;
 }
 
 .sidebar .profile {
     display: flex;
     align-items: center;
     margin: 15px 0;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #f2f2f2;
 }
 
 .sidebar .profile span {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     border-radius: 4px;
     background-color: #f2f2f2;
     margin-right: 6px;
@@ -290,4 +205,58 @@ table tr:nth-child(even) {
     border: 1px solid #f2f2f2;
     padding: 8px 12px;
     border-radius: 4px;
+}
+
+.dashboard .main {
+    width: 100%;
+    padding: 0 30px;
+}
+
+table {
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #e1e5ee;
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+}
+
+table thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+}
+
+table th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+table td {
+    padding: 1rem 2rem;
+    font-size: 15px;
+}
+
+table a {
+    text-decoration: none;
+    color: #2962ff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f4f6fb;
+}
+
+.fa {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.fa-edit {
+    color: rgb(61, 77, 221);
+    margin: 0 14px;
+}
+
+.fa-trash {
+    color: rgba(255, 51, 0, 0.76);
 }

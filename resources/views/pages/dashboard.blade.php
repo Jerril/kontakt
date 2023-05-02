@@ -17,10 +17,15 @@
                 <div class="groups">
                     <p>Groups <span title="Create group" data-toggle="modal" data-target="#addGroupModal">+</span></p>
 
+                    @if(!$groups->isEmpty())
                     <ul>
-                        <li>Home</li>
-                        <li>Family</li>
+                        @foreach ($groups as $index => $group)
+                        <li><a title="Delete group" href="{{route('group.delete', ['group' => $group->id])}}"><i class="fa fa-trash"></i></a> &nbsp; {{$group->name}}</li>
+                        @endforeach
                     </ul>
+                    @else
+                        <p style="font-size:14px; font-weight:500" class="bg-yellow-100 rounded text-black text-center my-3 py-1">No groups created yet</p>
+                    @endif
                 </div>
             </div>
 
@@ -28,10 +33,11 @@
             </div>
 
             <div>
-                <p class="profile"><span></span>Hello {{auth()->user()->name}}</p>
-                <a href="{{route('logout')}}"><i class="fas fa-arrow-right"></i> Logout</a>
+                <p class="profile"><span></span>Hello! {{auth()->user()->name}}</p>
+                <a href="{{route('logout')}}" class="logout"><i class="fas fa-arrow-right"></i> Logout</a>
             </div>
         </div>
+
         <div class="main">
             <form action="" class="search-bar">
                 <input type="text" name="" placeholder="Search..." />
@@ -51,6 +57,7 @@
                         </ul>
                     </div>
                 @endif
+                @if(!$contacts->isEmpty())
                 <table>
                     <thead>
                         <tr>
@@ -62,7 +69,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if($contacts)
                         @foreach ($contacts as $contact)
                             <tr>
                                 <td>{{$contact->name ?? ''}}</td>
@@ -114,9 +120,13 @@
                                 </div>
                             </div>
                         @endforeach
-                        @endif
                     </tbody>
                 </table>
+                @else
+                    <div role="alert" class="w-1/2 bg-yellow-100 text-center text-black rounded px-4 py-2 mt-4 mx-auto">
+                        <p style="font-weight:500" class="text-center">No contacts created yet</p>
+                    </div>
+                @endif
             </section>
         </div>
     </div>
@@ -134,12 +144,6 @@
             <form method="POST" action="{{route('contact.post')}}">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group wrapper" title="Upload Avatar">
-                        <div class="file-upload">
-                            <input type="file" name="avatar" class="form-control" id="contact-avatar">
-                            <i class="fa fa-arrow-up"></i>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="contact-name" class="col-form-label">Name</label>
                         <input type="text" name="name" class="form-control" id="contact-name" required>
@@ -155,6 +159,10 @@
                     <div class="form-group">
                         <label for="address" class="col-form-label">Address</label>
                         <input type="text" name="address" class="form-control" id="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar" class="col-form-label">Upload Avatar</label>
+                        <input type="file" name="avatar" class="form-control" id="avatar">
                     </div>
                     <div class="form-group">
                         <label for="group" class="col-form-label">Group</label>
@@ -188,7 +196,7 @@
                     </div>
                     <div class="form-group">
                         <label for="group-description" class="col-form-label">Description</label>
-                        <input type="text" name="name" class="form-control" id="group-description" required>
+                        <input type="text" name="description" class="form-control" id="group-description">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function() {
 
     // contact group routes
     Route::post('/group', [DashboardController::class, 'storeGroup'])->name('group.post');
-    Route::delete('/group/{group}', [DashboardController::class, 'deleteGroup'])->name('group.delete');
+    Route::get('/group/{group}', [DashboardController::class, 'deleteGroup'])->name('group.delete');
 
     // contact routes
     Route::post('/contact', [DashboardController::class, 'storeContact'])->name('contact.post');

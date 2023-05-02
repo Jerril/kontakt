@@ -4,7 +4,7 @@
     @include('includes.nav')
 
     @if ($errors->any())
-        <div role="alert" class="w-1/2 bg-red-400 text-white text-center font-bold rounded-t px-4 py-2 mt-4 mx-auto">
+        <div role="alert" class="w-1/2 bg-red-400 text-white text-center rounded px-4 py-2 mt-4 mx-auto">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

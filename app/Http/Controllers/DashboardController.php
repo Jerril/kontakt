@@ -11,8 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         $contacts = Contact::where('user_id', auth()->id())->orderBy('name')->get();
+        $groups = Group::where('user_id', auth()->id())->get();
 
-        return view('pages.dashboard', compact('contacts'));
+        return view('pages.dashboard', compact('contacts', 'groups'));
     }
 
     public function storeGroup(Request $request)
