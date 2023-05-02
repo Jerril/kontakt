@@ -20,7 +20,7 @@
                     @if(!$groups->isEmpty())
                     <ul>
                         @foreach ($groups as $index => $group)
-                        <li><a title="Delete group" href="{{route('group.delete', ['group' => $group->id])}}"><i class="fa fa-trash"></i></a> &nbsp; {{$group->name}}</li>
+                        <li><a title="Delete group" href="{{route('group.delete', ['group' => $group->id])}}"><i class="fa fa-trash-alt"></i></a> &nbsp; {{$group->name}}</li>
                         @endforeach
                     </ul>
                     @else
@@ -102,7 +102,7 @@
                                     ---
                                     @endif
                                 </td>
-                                <td><i class="fa fa-edit" data-toggle="modal" data-target="#editContactModal{{$contact->id}}"></i><a href="{{route('contact.delete', ['contact' => $contact->id])}}"><i class="fa fa-trash"></i></a></td>
+                                <td><i class="fa fa-edit" data-toggle="modal" data-target="#editContactModal{{$contact->id}}"></i><a href="{{route('contact.delete', ['contact' => $contact->id])}}"><i class="fa fa-trash-alt"></i></a></td>
                             </tr>
                             {{-- Edit Contact Modal --}}
                             <div class="modal fade" id="editContactModal{{$contact->id}}" tabindex="-1" aria-labelledby="editContactModalLabel{{$contact->id}}" aria-hidden="true">

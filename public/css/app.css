@@ -276,7 +276,6 @@ td .img img {
 }
 
 .fa {
-    font-size: 15px;
     cursor: pointer;
 }
 
@@ -285,8 +284,13 @@ td .img img {
     margin: 0 14px;
 }
 
-.fa-trash {
+.fa-trash-alt {
     color: rgba(255, 51, 0, 0.76);
+}
+
+.sidebar .fa-trash-alt {
+    color: rgba(255, 51, 0, 0.7);
+    font-size: 14px;
 }
 
 .main .heading {
