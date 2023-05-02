@@ -38,9 +38,9 @@ Route::middleware('auth')->group(function() {
 
     // contact routes
     Route::name('contact')->group(function() {
-        Route::post('/', [DashboardController::class, 'storeContact'])->name('contact.post');
-        Route::put('/{contact}', [DashboardController::class, 'updateContact'])->name('contact.put');
-        Route::delete('/{contact}', [DashboardController::class, 'deleteContact'])->name('contact.delete');
+        Route::post('/', [DashboardController::class, 'storeContact'])->name('.post');
+        Route::put('/{contact}', [DashboardController::class, 'updateContact'])->name('.put');
+        Route::get('/{contact}', [DashboardController::class, 'deleteContact'])->name('.delete');
 
         // assign contact to a group
         Route::put('/{contact}/group/{group}', [DashboardController::class, 'groupContact'])->name('group-contact');

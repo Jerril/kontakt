@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
         $group = Group::create($data);
 
-        return response()->redirect('dashboard')->with(['msg' => 'Group created successfully']);
+        return redirect()->route('dashboard')->with('msg', "Group created successfully");
     }
 
     public function deleteGroup(Request $request, Group $group)
@@ -50,13 +50,13 @@ class DashboardController extends Controller
 
         $data['user_id'] = auth()->id();
 
-        if($request->has('avatar')){
+        if($request->hasFile('avatar')){
             $data['avatar'] = $request->file('avatar')->store('avatar/'.auth()->id(), 'public');
         }
 
         $contact = Contact::create($data);
 
-        return response()->redirect('dashboard')->with(['msg' => 'Contact created successfully']);
+        return redirect()->route('dashboard')->with('msg', "Contact created successfully");
     }
 
     public function updateContact(Request $request, Contact $contact)
@@ -71,9 +71,9 @@ class DashboardController extends Controller
 
         $data['user_id'] = auth()->id();
 
-        $contact = Contact::update($data);
+        $contact = $contact->update($data);
 
-        return response()->redirect('dashboard')->with(['msg' => 'Contact updated successfully']);
+        return redirect()->route('dashboard')->with('msg', "Contact updated successfully");
     }
 
     public function deleteContact(Request $request, Contact $contact)
