@@ -87,7 +87,7 @@
                                 <td class="contact-name">
                                     <div class="img">
                                     @if($contact->avatar)
-                                        <img src="{{asset('storage/'.$contact->avatar) ?? ''}}" alt="">
+                                        <img src="{{url('storage/'.$contact->avatar) ?? ''}}" alt="">
                                     @endif
                                     </div>
                                     <p>{{$contact->name ?? ''}}</p>

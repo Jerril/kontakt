@@ -3,7 +3,7 @@
 
     @if(auth()->user())
         <div>
-            <a href="/login" class="login">Go to Dashboard <i class="fas fa-arrow-up"></i></a>
+            <a href="/dashboard" class="login">Go to Dashboard <i class="fas fa-arrow-up"></i></a>
         </div>
     @else
         <div>
