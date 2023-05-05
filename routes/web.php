@@ -41,4 +41,7 @@ Route::middleware('auth')->group(function() {
 
     // assign contact to a group
     Route::put('/contact/{contact}/group/{group}', [DashboardController::class, 'groupContact'])->name('contact.group-contact');
+
+    // export csv
+    Route::get('/export-csv', [DashboardController::class, 'exportCSV'])->name('export.csv');
 });

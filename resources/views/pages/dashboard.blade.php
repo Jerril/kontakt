@@ -50,9 +50,9 @@
 
                     </form>
                 </div>
-                <div class="export" title='Export'>
+                <a href="{{route('export.csv')}}" class="export" title='Export'>
                     <i class="fas fa-print"></i>
-                </div>
+                </a>
             </div>
             <section>
                 @if (Session::has('msg'))

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\Contact;
+use App\Exports\ContactsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -99,5 +101,10 @@ class DashboardController extends Controller
         $contact->save();
 
         return redirect()->route('dashboard')->with('msg', "Contact successfully assigned to group");
+    }
+
+    public function exportCSV()
+    {
+        return Excel::download(new ContactsExport, 'contacts.csv');
     }
 }
